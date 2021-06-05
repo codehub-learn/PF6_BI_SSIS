@@ -1,0 +1,320 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/5/2021 11:36:40 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CREATE"
+  DTS:CreatorName="CREATE\Stan"
+  DTS:DTSID="{3067AA21-E6EA-49E1-A3C5-06973D4D044F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1032"
+  DTS:ObjectName="BackupDB"
+  DTS:PackageType="5"
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{8CBC6ABD-04F6-4A9F-A20F-9790B0287A0C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdventureWorksTSQL]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{26560A15-D654-4F76-9489-31D735E30802}"
+      DTS:ObjectName="AdventureWorksTSQL">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Integrated Security=SSPI;Connect Timeout=30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationFile]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{B83EFEE1-740C-4DE6-803A-A48609ED7849}"
+      DTS:ObjectName="DestinationFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\Users\Stan\Desktop\NewFolder\CopiedFile.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NewFolder]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{6C78CD08-8596-4BF3-8C01-45CFC2F5DD8C}"
+      DTS:ObjectName="NewFolder">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="3"
+          DTS:ConnectionString="C:\Users\Stan\Desktop\NewFolder" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceFile]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{298328AD-4ED1-4A6E-9B35-6017B549ACAB}"
+      DTS:ObjectName="SourceFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\Stan\Desktop\Output.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1E091369-882A-47B3-8293-36FF14DDE8B5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4A8EB1EE-D56D-4302-8E87-FB81BD886325}"
+          SQLTask:SqlStatementSource="TRUNCATE Table NewFactCurrencyRate;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{02826FA2-1E97-4C41-9391-AE02624EEDF3}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Back Up Database Task"
+          DTS:CreationName="Microsoft.DbMaintenanceBackupTask"
+          DTS:Description="Back Up Database Task"
+          DTS:DTSID="{B84E2E6A-D7EC-4C30-B93D-240E59077696}"
+          DTS:ExecutableType="Microsoft.DbMaintenanceBackupTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Back Up Database Task"
+          DTS:TaskContact="Back Up Database Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{26560A15-D654-4F76-9489-31D735E30802}"
+              SQLTask:DatabaseSelectionType="4"
+              SQLTask:ServerVersion="15"
+              SQLTask:ExtendedLogging="True"
+              SQLTask:LocalConnectionForLogging=""
+              SQLTask:TaskName=""
+              SQLTask:IgnoreDatabasesInNotOnlineState="False"
+              SQLTask:BackupAction="0"
+              SQLTask:BackupIsIncremental="False"
+              SQLTask:BackupFileGroupsFiles=""
+              SQLTask:BackupDeviceType="2"
+              SQLTask:BackupPhysicalDestinationType="2"
+              SQLTask:BackupDestinationType="0"
+              SQLTask:BackupDestinationAutoFolderPath="C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Backup"
+              SQLTask:BackupActionForExistingBackups="0"
+              SQLTask:BackupCreateSubFolder="False"
+              SQLTask:BackupFileExtension=""
+              SQLTask:BackupVerifyIntegrity="False"
+              SQLTask:ExpireDate="2021-06-19T00:00:00"
+              SQLTask:RetainDays="14"
+              SQLTask:InDays="True"
+              SQLTask:UseExpiration="False"
+              SQLTask:BackupCompressionAction="0"
+              SQLTask:CopyOnlyBackup="False"
+              SQLTask:IgnoreReplicaType="False"
+              SQLTask:CredentialName=""
+              SQLTask:ContainerName=""
+              SQLTask:UrlPrefix=""
+              SQLTask:IsBackupEncrypted="False"
+              SQLTask:BackupEncryptionAlgorithm="0"
+              SQLTask:BackupEncryptorType="0"
+              SQLTask:BackupEncryptorName=""
+              SQLTask:Checksum="False"
+              SQLTask:ContinueOnError="False"
+              SQLTask:IsBlockSizeUsed="False"
+              SQLTask:IsMaxTransferSizeUsed="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:SelectedDatabases
+                SQLTask:DatabaseName="AdventureWorksDW2019" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute SQL Task 1"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B2D9D77A-C6F7-4616-BA4B-A459F8515FD9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task 1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4A8EB1EE-D56D-4302-8E87-FB81BD886325}"
+              SQLTask:SqlStatementSource="SELECT * From NonExistent;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute T-SQL Statement Task"
+          DTS:CreationName="Microsoft.DbMaintenanceTSQLExecuteTask"
+          DTS:Description="Execute T-SQL Statement Task"
+          DTS:DTSID="{81B1885D-4E68-4FE4-8BC5-D42BE5652026}"
+          DTS:ExecutableType="Microsoft.DbMaintenanceTSQLExecuteTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute T-SQL Statement Task"
+          DTS:TaskContact="Execute T-SQL Statement Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{26560A15-D654-4F76-9489-31D735E30802}"
+              SQLTask:SqlStatementSource="USE AdventureWorksDW2019;&#xA;TRUNCATE TABLE [NewFactCurrencyRate];"
+              SQLTask:ServerVersion="9"
+              SQLTask:ExtendedLogging="True"
+              SQLTask:LocalConnectionForLogging=""
+              SQLTask:TaskName=""
+              SQLTask:IgnoreDatabasesInNotOnlineState="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{0C750816-ABCF-48EC-9BB5-84B159EA1FA3}"
+          DTS:From="Package\Sequence Container\Execute SQL Task 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\Execute T-SQL Statement Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{EB8C2CC2-CA4F-4337-A56F-B04376569158}"
+          DTS:From="Package\Sequence Container\Execute T-SQL Statement Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Sequence Container\Back Up Database Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{99FE1589-1DB6-42CD-B87A-27620D245268}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="360.714291857214,118.529413427036" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Sequence Container\Execute SQL Task 1"
+          TopLeft="82.2000125169756,37.3411826265726" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="169.614298030552,78.9411826265726">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.0470602070172"
+              Start="0,0"
+              End="0,49.5470602070172">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5470602070172" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\Sequence Container\Execute T-SQL Statement Task"
+          TopLeft="58.6285835441281,135.98824283359" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="173.457155167327,177.58824283359">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.6941191377936"
+              Start="0,0"
+              End="0,57.1941191377936">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.1941191377936" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Sequence Container\Back Up Database Task"
+          TopLeft="81.4857267905259,242.282361971383" />
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="True"
+          PanelSize="353.6,339.2"
+          Size="353.6,382.4"
+          Id="Package\Sequence Container"
+          TopLeft="269.514288451234,220.470589307765" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="444.114290154224,160.129413427036">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.3411758807292"
+              Start="0,0"
+              End="0,52.8411758807292">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.8411758807292" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

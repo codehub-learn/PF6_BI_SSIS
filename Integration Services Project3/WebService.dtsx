@@ -1,0 +1,215 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/5/2021 11:36:40 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CREATE"
+  DTS:CreatorName="CREATE\Stan"
+  DTS:DTSID="{F8FDCA11-3670-49E6-9B60-D43DEBCD8D94}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1032"
+  DTS:ObjectName="WebService"
+  DTS:PackageType="5"
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{FC316982-63F0-4A87-86CD-9A7CBFC0C4AA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdventureWorksTSQL]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{77ACBE62-E72A-4FAA-AE7E-BD7EEFDE6B93}"
+      DTS:ObjectName="AdventureWorksTSQL">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Integrated Security=SSPI;Connect Timeout=30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationFile]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2981E69B-6AC7-4C9A-981B-ABD807C5D208}"
+      DTS:ObjectName="DestinationFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\Users\Stan\Desktop\NewFolder\CopiedFile.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Example.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{EEEAF412-CF5E-46E1-B475-345E3FDF0942}"
+      DTS:ObjectName="Example.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\Users\Stan\Desktop\Example.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HTTP Connection Manager]"
+      DTS:CreationName="HTTP"
+      DTS:DTSID="{B10CF27A-8CE1-4B55-AFA1-86F6B96C5E5C}"
+      DTS:ObjectName="HTTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="https://footballpool.dataaccess.eu/info.wso?WSDL">
+          <DTS:HttpConnection
+            DTS:ServerURL="https://footballpool.dataaccess.eu/info.wso?WSDL">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6TDrU5ZEc02mvDp196FeowAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADIVwVyq3IXvNaNHSOWY36yVMnWAQjJajVUUs00fr9CgwAAAAAOgAAAAAIAACAAAADycQFm6L1NnnvprI4t/+2hXfE0H8DUzIfF4Jfabdm3hBAAAAB0na8MMOAhRkrXNF0jDCBDQAAAAH32czGB8i5NvLdEea+UcfuR5tbkmW83BvolDDv/WP3Vz64m3VvU8Y6E/YgbIpmhfdeARvB18guL3Gdc9TDWUGI</DTS:Property>
+            <DTS:Property
+              DTS:Name="ProxyPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6TDrU5ZEc02mvDp196FeowAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABafpROtqmZNkkc7CTsoL3ecu1v7Qkdo5E+zEgvchrP2gAAAAAOgAAAAAIAACAAAAAPXyAAWfWU7wyUHc7z6RIqV59yxZOQsBA/e1xHFFMadRAAAACAudPOQZ4wYyAxNUwCNXQFQAAAAOqEF0qOir6mD54C5EgR2o2WjiTtO78/e/t8t5OLdLf6mM1aZo49pPnJn2IK7RqJ7H9rdcmpVXMokQsrlIRn0E8</DTS:Property>
+          </DTS:HttpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HTTP Connection Manager 1]"
+      DTS:CreationName="HTTP"
+      DTS:DTSID="{47F68596-D72D-470E-BE91-4233DCA8B940}"
+      DTS:ObjectName="HTTP Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="https://footballpool.dataaccess.eu/info.wso?WSDL">
+          <DTS:HttpConnection
+            DTS:ServerURL="https://footballpool.dataaccess.eu/info.wso?WSDL"
+            DTS:ChunkSize="100"
+            DTS:UseProxy="True">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6TDrU5ZEc02mvDp196FeowAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADDMQFJgCcOlwJ4sVvM+xo/vj3yEs17eMIOFxOjAc+enwAAAAAOgAAAAAIAACAAAADSDV28RuMbFDEy2u/ihZpruhdT2Nc0b2kN+xySO7uLlBAAAAANrqVY4NfXs3movm0/DrqBQAAAAMhO3s68blfw8Tvuf+eG7Adz1wA9o9vDupTJn8KXWbV25W3Axz7jkq6Zzg366+TpgSI2YvTkb2Jr7miec7KwKWg</DTS:Property>
+            <DTS:Property
+              DTS:Name="ProxyPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6TDrU5ZEc02mvDp196FeowAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABztTdjDEeJXCIkHyM35ilhgsE8HsOrSbrVa7wEzOf5IgAAAAAOgAAAAAIAACAAAABBEOWmb/zhYVuGN+cSay3FW13O0gsqTmqoVhmN68NDXhAAAADstoZ7NEN/atCZMfuPZQpFQAAAAIcNY/wwrbahgPK28U1brxSnc9vXwEX7oagexuzBC8SwcBCb8zrC5pm4FnnhWtMiWg7g6K7UFU2ccuow6Z/0jEs</DTS:Property>
+          </DTS:HttpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HTTP Connection Manager 2]"
+      DTS:CreationName="HTTP"
+      DTS:DTSID="{5718D24C-392F-459D-97EE-421089079BCE}"
+      DTS:ObjectName="HTTP Connection Manager 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="https://www.w3.org/2001/04/wsws-proceedings/uche/wsdlrdf.html">
+          <DTS:HttpConnection
+            DTS:ServerURL="https://www.w3.org/2001/04/wsws-proceedings/uche/wsdlrdf.html">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6TDrU5ZEc02mvDp196FeowAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABWN0m6yhhDET99Tg5Ut9XWFCpPtaZKMw/fGw89h/FrugAAAAAOgAAAAAIAACAAAAAg4Ff2BPit3vTXNjLxkW2HR34sNJlt0e12KcBq+iGbbxAAAADnpjxiQqPUGBof1f0I9NBYQAAAAED3lRzCRe5vmGBpoaXvpJtUt1UFXUtl9ZtDXNcju3SkDmGqUjecGbsQ3gURidBuHFpoqrbbLu/7vcSn2y0UPN0</DTS:Property>
+            <DTS:Property
+              DTS:Name="ProxyPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6TDrU5ZEc02mvDp196FeowAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAEYEqajPt4arsWyKcBUsztwY1kaf1XfWVwLNAaVAFVCwAAAAAOgAAAAAIAACAAAADBdVX/Z9vVpnX0yXA+2if6I4TF/9nLNxKTAgP8qhFgdhAAAAB3cbVo4iUA753FAQSHbnW3QAAAAH5EtW25TtrnapEJRrJ/7JX4kuafPKQzC5iCfV7KvSf/+LmHPHG4rMOdDbImSzhebzp2kbMYa+7/3EycAgG8b9Q</DTS:Property>
+          </DTS:HttpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NewFolder]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{1799CE08-4217-4B5C-9159-50654D42BFBC}"
+      DTS:ObjectName="NewFolder">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="3"
+          DTS:ConnectionString="C:\Users\Stan\Desktop\NewFolder" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceFile]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{6F8C62F0-0B1B-4404-AA1F-6FCE84920FB7}"
+      DTS:ObjectName="SourceFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\Stan\Desktop\Output.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WSDLOutput.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{6AEEFA88-A44B-439E-83A3-74900C0C84EE}"
+      DTS:ObjectName="WSDLOutput.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\Users\Stan\Desktop\WSDLOutput.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Web Service Task"
+      DTS:CreationName="Microsoft.WebServiceTask"
+      DTS:Description="Web Service Task"
+      DTS:DTSID="{6CF1ACCD-0B70-4D0D-87D9-C418572E75AE}"
+      DTS:ExecutableType="Microsoft.WebServiceTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Web Service Task"
+      DTS:TaskContact="Web Service Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <WSTask:WebServiceTaskData
+          WSTask:ConnectionName="{B10CF27A-8CE1-4B55-AFA1-86F6B96C5E5C}"
+          WSTask:Service="Info"
+          WSTask:WSDLFile="C:\Users\Stan\Desktop\example.wsdl"
+          WSTask:OverwriteWSDLFile="True"
+          WSTask:OutputLocation="Example.xml" xmlns:WSTask="www.microsoft.com/sqlserver/dts/tasks/webservicetask">
+          <WSTask:MethodInfo
+            WSTask:MethodName="ResultsAllGames"
+            WSTask:MessageName="">
+            <WSTask:Documentation>Returns game result of all games overall, in one group or at one level. When groupid &amp;lt; 1 all games are processed (optionally filtered by level). A ID or level can be retrieved via GroupInfo.</WSTask:Documentation>
+            <WSTask:ParamInfo
+              WSTask:Name="iGroupId"
+              WSTask:Datatype="int"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="0">
+              <WSTask:PrimitiveValue></WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+            <WSTask:ParamInfo
+              WSTask:Name="iLevel"
+              WSTask:Datatype="int"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="1">
+              <WSTask:PrimitiveValue></WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+          </WSTask:MethodInfo>
+        </WSTask:WebServiceTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Web Service Task"
+          TopLeft="252.142861436824,198.058826307112" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
